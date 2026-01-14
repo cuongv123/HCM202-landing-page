@@ -44,7 +44,7 @@ const timelineEvents = [
     title: "Tiếp Tục Con Đường",
     description: "Hoàn thiện thể chế XHCN, phát triển bền vững",
     color: "from-orange-600 to-orange-700",
-    image: "/images/bacho9.jpg"
+    image: "/images/bacho10.jpg"
   }
 ];
 
