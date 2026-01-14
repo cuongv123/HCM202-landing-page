@@ -1,43 +1,50 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 
 const timelineEvents = [
   {
     year: "1920",
     title: "Tiếp Nhận Chủ Nghĩa Mác-Lênin",
     description: "Đọc Sơ thảo Lênin, tìm thấy con đường cứu nước đúng đắn",
-    color: "from-blue-600 to-blue-700"
+    color: "from-blue-600 to-blue-700",
+    image: "/images/bacholenin.jpg"
   },
   {
     year: "1930",
     title: "Thành Lập Đảng Cộng Sản",
     description: "Xác lập con đường cách mạng bỏ qua TBCN, đi thẳng lên CNXH",
-    color: "from-red-600 to-red-700"
+    color: "from-red-600 to-red-700",
+    image: "/images/bachodangcongsan.jpg"
   },
   {
     year: "1945",
     title: "Tuyên Ngôn Độc Lập",
     description: "Khẳng định độc lập dân tộc, bắt đầu thời kỳ quá độ",
-    color: "from-yellow-600 to-yellow-700"
+    color: "from-yellow-600 to-yellow-700",
+    image: "/images/bachotuyenngon.jpg"
   },
   {
     year: "1954-1975",
     title: "Xây Dựng CNXH Miền Bắc",
     description: "Cải cách ruộng đất, công nghiệp hóa, xây dựng CNXH",
-    color: "from-green-600 to-green-700"
+    color: "from-green-600 to-green-700",
+    image: "/images/bachomienbac.jpg"
   },
   {
     year: "1986",
     title: "Đổi Mới",
     description: "Kinh tế thị trường định hướng XHCN, mở cửa hội nhập",
-    color: "from-purple-600 to-purple-700"
+    color: "from-purple-600 to-purple-700",
+    image: "/images/bacho8.jpg"
   },
   {
     year: "Hiện Nay",
     title: "Tiếp Tục Con Đường",
     description: "Hoàn thiện thể chế XHCN, phát triển bền vững",
-    color: "from-orange-600 to-orange-700"
+    color: "from-orange-600 to-orange-700",
+    image: "/images/bacho9.jpg"
   }
 ];
 
@@ -111,21 +118,35 @@ export default function VisualTimeline() {
                     <div
                       onClick={() => setActiveIndex(activeIndex === index ? null : index)}
                       className={`
-                        bg-white/95 dark:bg-gray-800/95 backdrop-blur p-8 rounded-2xl shadow-2xl cursor-pointer
-                        transform transition-all duration-500 hover:scale-110 hover:shadow-red-500/30 hover:rotate-1
+                        bg-white/95 dark:bg-gray-800/95 backdrop-blur rounded-2xl shadow-2xl cursor-pointer overflow-hidden
+                        transform transition-all duration-500 hover:scale-105 hover:shadow-red-500/30
                         border-2 border-transparent hover:border-red-300
                         ${activeIndex === index ? 'ring-4 ring-offset-4 ring-red-500 scale-105 shadow-red-500/50' : ''}
                       `}
                     >
-                      <div className={`inline-block px-6 py-3 rounded-full text-white text-base font-bold mb-4 bg-gradient-to-r ${event.color} shadow-lg hover:shadow-xl transition-shadow`}>
-                        {event.year}
+                      {/* Image */}
+                      <div className="relative h-64 md:h-80 overflow-hidden bg-gray-100 dark:bg-gray-700">
+                        <Image
+                          src={event.image}
+                          alt={event.title}
+                          fill
+                          className="object-contain p-4 transition-transform duration-500 hover:scale-105"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+                        <div className={`absolute top-4 ${isLeft ? 'right-4' : 'left-4'} inline-block px-6 py-3 rounded-full text-white text-base font-bold bg-gradient-to-r ${event.color} shadow-lg`}>
+                          {event.year}
+                        </div>
                       </div>
-                      <h3 className="text-2xl font-bold mb-2 text-gray-900 dark:text-white">
-                        {event.title}
-                      </h3>
-                      <p className="text-gray-600 dark:text-gray-300">
-                        {event.description}
-                      </p>
+                      
+                      {/* Text Content */}
+                      <div className="p-6">
+                        <h3 className="text-2xl font-bold mb-2 text-gray-900 dark:text-white">
+                          {event.title}
+                        </h3>
+                        <p className="text-gray-600 dark:text-gray-300">
+                          {event.description}
+                        </p>
+                      </div>
                     </div>
                   </div>
 
