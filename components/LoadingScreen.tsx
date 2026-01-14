@@ -4,15 +4,24 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function LoadingScreen() {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    // Tắt loading sau 2.5 giây
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 2500);
+    // Kiểm tra xem đã load lần đầu chưa
+    const hasLoaded = sessionStorage.getItem('hasLoadedBefore');
+    
+    if (!hasLoaded) {
+      // Lần đầu tiên truy cập
+      setIsLoading(true);
+      
+      const timer = setTimeout(() => {
+        setIsLoading(false);
+        // Đánh dấu đã load rồi
+        sessionStorage.setItem('hasLoadedBefore', 'true');
+      }, 2500);
 
-    return () => clearTimeout(timer);
+      return () => clearTimeout(timer);
+    }
   }, []);
 
   return (

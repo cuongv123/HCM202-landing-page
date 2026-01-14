@@ -2,7 +2,7 @@ import Header from "@/components/Header";
 import VisualTimeline from "@/components/VisualTimeline";
 import TransitionPath from "@/components/TransitionPath";
 import ModernApplication from "@/components/ModernApplication";
-import Curriculum from "@/components/Curriculum";
+import VideoPresentation from "@/components/VideoPresentation";
 import Footer from "@/components/Footer";
 
 export default function ContentPage() {
@@ -13,7 +13,7 @@ export default function ContentPage() {
         <VisualTimeline />
         <TransitionPath />
         <ModernApplication />
-        <Curriculum />
+        <VideoPresentation />
       </main>
       <Footer />
     </>
