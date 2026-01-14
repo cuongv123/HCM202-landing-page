@@ -11,6 +11,9 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "HCM202 - Tư Tưởng Hồ Chí Minh",
   description: "Con đường quá độ lên chủ nghĩa xã hội ở Việt Nam",
+  icons: {
+    icon: '/icon.svg',
+  },
 };
 
 export default function RootLayout({
