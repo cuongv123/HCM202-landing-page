@@ -44,9 +44,14 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="bg-white text-red-900 px-8 py-4 rounded-full font-semibold text-lg hover:bg-red-50 transition-colors shadow-xl"
           onClick={() => {
-            document.getElementById('timeline')?.scrollIntoView({ 
-              behavior: 'smooth' 
-            });
+            const nextSection = document.querySelector('section:nth-of-type(2)');
+            if (nextSection) {
+              const offsetTop = nextSection.getBoundingClientRect().top + window.pageYOffset - 100;
+              window.scrollTo({ 
+                top: offsetTop,
+                behavior: 'smooth'
+              });
+            }
           }}
         >
           Khám Phá Hành Trình →
